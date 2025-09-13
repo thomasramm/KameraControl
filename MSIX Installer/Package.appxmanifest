@@ -28,8 +28,7 @@
 
   <Applications>
     <Application Id="App"
-      Executable="$targetnametoken$.exe"
-      EntryPoint="$targetentrypoint$">
+      Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
       <uap:VisualElements
         DisplayName="Kamerasteuerung DeLuxe"
         Description="zur Steuerung einer PTZ Kamera über HTTP"

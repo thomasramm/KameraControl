@@ -64,7 +64,7 @@
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <EntryPointProjectUniqueName>..\..\KameraSteuerungDeLuxe.csproj</EntryPointProjectUniqueName>
+    <EntryPointProjectUniqueName>..\KameraSteuerungDeLuxe\KameraSteuerungDeLuxe.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <AppxBundle>Always</AppxBundle>
@@ -161,6 +161,6 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\KameraSteuerungDeLuxe.csproj" />
+    <ProjectReference Include="..\KameraSteuerungDeLuxe\KameraSteuerungDeLuxe.csproj" />
   </ItemGroup>
 </Project>
