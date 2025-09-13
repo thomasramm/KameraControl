@@ -14,7 +14,13 @@ namespace KameraControl
     {
         private TaskbarIcon? _trayIcon;
         MainWindow? mainWindow = null;
-        private AppSettings _settings = AppSettingsStorage.Load();
+        private AppSettings _settings;
+
+        public App()
+        {
+            // Lade die Einstellungen asynchron
+            _settings = AppSettingsManager.Load();
+        }
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
@@ -43,7 +49,7 @@ namespace KameraControl
             }
 
             _trayIcon?.Dispose();
-            AppSettingsStorage.Save(_settings);
+            AppSettingsManager.Save(_settings);
             Shutdown(); // Beendet die gesamte App
         }
 
@@ -103,34 +109,6 @@ namespace KameraControl
                 mainWindow.Hide();
             }
         }
-
-        void BerechneFensterPositionBeiMausClick(Window window)
-        {
-            var mouse = WinForms.Control.MousePosition;
-
-            // Umrechnung auf WPF-Koordinaten (DIPs)
-            PresentationSource source = PresentationSource.FromVisual(window);
-            Matrix transform = source?.CompositionTarget?.TransformFromDevice ?? Matrix.Identity;
-            System.Windows.Point mouseWpf = transform.Transform(new System.Windows.Point(mouse.X, mouse.Y));
-
-            window.WindowStartupLocation = WindowStartupLocation.Manual;
-
-            // Bildschirmgrenzen (in WPF-Einheiten umrechnen)
-            var screen = WinForms.Screen.FromPoint(mouse);
-            var topLeft = transform.Transform(new System.Windows.Point(screen.WorkingArea.Left, screen.WorkingArea.Top));
-            var bottomRight = transform.Transform(new System.Windows.Point(screen.WorkingArea.Right, screen.WorkingArea.Bottom));
-
-            double x = mouseWpf.X - window.Width / 2;
-            double y = bottomRight.Y - window.Height - 10;
-
-            // Begrenzen auf Bildschirm
-            x = Math.Max(topLeft.X, Math.Min(x, bottomRight.X - window.Width));
-            y = Math.Max(topLeft.Y, Math.Min(y, bottomRight.Y - window.Height));
-
-            _settings.OpenPositionX = x;
-            _settings.OpenPositionY = y;
-        }
-
     }
 }
 

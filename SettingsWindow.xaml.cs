@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading.Tasks;
+using System.Windows;
 
 namespace KameraControl
 {
@@ -29,7 +30,7 @@ namespace KameraControl
             _settings.PresetCameraOn = PowerOnPresetBox.Text;
             _settings.OpenOnStart = ShowWindowOnStartup.IsChecked ?? false;
             _settings.HideWindowOnClick = HideOnClick.IsChecked ?? false;
-            AppSettingsStorage.Save(_settings);
+            AppSettingsManager.Save(_settings);
 
             DialogResult = true;
             Close();

@@ -45,11 +45,6 @@ namespace KameraControl
             ButtonPowerOnCommand = new RelayCommand(PowerOn);
         }
 
-        public void SaveSettings()
-        {
-            AppSettingsStorage.Save(Settings);
-        }
-
         private async void PowerOff(object? param)
         {
             if (Settings.PresetCameraOff.Length == 1)
