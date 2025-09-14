@@ -1,5 +1,5 @@
-﻿<Window x:Class="KameraControl.SettingsWindow"
-        xmlns:local="clr-namespace:KameraControl"
+﻿<Window x:Class="KameraSteuerungDeLuxe.SettingsWindow"
+        xmlns:local="clr-namespace:KameraSteuerungDeLuxe"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -75,6 +75,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
@@ -127,17 +128,22 @@
                 <ComboBoxItem Content="Deaktiviert"/>
             </ComboBox>
         </StackPanel>
-        <CheckBox Grid.Row="2" x:Name="ShowWindowOnStartup" 
-                  Content="Fenster beim Starten anzeigen" 
+        <CheckBox Grid.Row="2" x:Name="WindowsAutostart" 
+                  Content="Beim Start ausführen" 
                   Foreground="White"
                   Grid.ColumnSpan="2"
                   VerticalContentAlignment="Center"/>
-        <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+        <CheckBox Grid.Row="3" x:Name="ShowWindowOnStartup" 
+          Content="Fenster beim Starten anzeigen" 
+          Foreground="White"
+          Grid.ColumnSpan="2"
+          VerticalContentAlignment="Center"/>
+        <CheckBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                   x:Name="HideOnClick" 
           Content="Fenster Ausblenden nach Click" 
           Foreground="White"
           VerticalContentAlignment="Center"/>
-        <ItemsControl Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4"
+        <ItemsControl Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5"
             ItemsSource="{Binding Buttons}" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -207,10 +213,10 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <Button Grid.Row="5" Grid.Column="0" 
+        <Button Grid.Row="6" Grid.Column="0" 
                 Content="Abbrechen" 
                 Click="Cancel_Click" Margin="0,0,0,0" />
-        <Button Grid.Row="5" Grid.Column="1" 
+        <Button Grid.Row="6" Grid.Column="1" 
         Content="Speichern" 
         Click="Save_Click" Margin="0,0,0,0" />
     </Grid>

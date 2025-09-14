@@ -1,14 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿using Microsoft.Win32;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace KameraControl
+namespace KameraSteuerungDeLuxe
 { 
     public class AppSettings
     {
         public bool OpenOnStart { get; set; } = true;
-
-        public bool WindowIsHorizontalDesign {  get; set; } = false;
 
         public bool HideWindowOnClick { get; set; } = false;
 
@@ -21,9 +20,8 @@ namespace KameraControl
         public int CameraPort { get; set; } = 5678;
         public ObservableCollection<DisplayButton> DisplayButtons { get; set; } = new();
 
-        public DisplayButton DayPresetButton { get; set; } = new();
-
         public string PresetCameraOn { get; set; } = "1";
+
         public string PresetCameraOff { get; set; } = "9";
     }
 
@@ -33,8 +31,10 @@ namespace KameraControl
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "KameraSteuerungDeLuxe",
             "Settings.xml");
+        private static readonly string AppName = "KameraSteuerungDeLuxe";
+        private static readonly string AutostartRegistryPath = @"Software\Microsoft\Windows\CurrentVersion\Run";
 
-        public static void Save(AppSettings settings)
+        public static void Save(AppSettings settings, bool? autostartEnabled)
         {
             try
             {
@@ -43,6 +43,8 @@ namespace KameraControl
                 var serializer = new XmlSerializer(typeof(AppSettings));
                 using var writer = new StreamWriter(FilePath);
                 serializer.Serialize(writer, settings);
+
+                SetAutostartEnabled(autostartEnabled);
             }
             catch (Exception ex)
             {
@@ -69,9 +71,12 @@ namespace KameraControl
                 // optional: Logging oder Fehlermeldung
                 Console.WriteLine($"Fehler beim Laden der Einstellungen: {ex.Message}");
             }
+            if (settings is null)
+            {
+                settings ??= new AppSettings();
+                LoadDefaultConfig(settings);
 
-            settings ??= new AppSettings();
-            LoadDefaultConfig(settings);
+            }
 
             return settings;
         }
@@ -89,6 +94,30 @@ namespace KameraControl
             settings.DisplayButtons.Add(new DisplayButton { Position = 8, Name = "Tisch", Icon = "Tisch 02", Preset = "8" });
             settings.DisplayButtons.Add(new DisplayButton { Position = 9, Name = "Bühne", Icon = "Bühne 01", Preset = "9" });
             settings.DisplayButtons.Add(new DisplayButton { Position = 10, Name = "Bühne", Icon = "Bühne 02", Preset = "0" });
+        }
+
+        public static void SetAutostartEnabled(bool? enabled)
+        {
+            RegistryKey? key = Registry.CurrentUser.OpenSubKey(AutostartRegistryPath, true);
+
+            if (enabled == true)
+            {
+                key?.SetValue(AppName, $"\"{Environment.ProcessPath}\"");
+            }
+            else
+            {
+                if (key?.GetValue(AppName) != null)
+                {
+                    key.DeleteValue("KameraSteuerungDeLuxe");
+                }
+            }
+
+        }
+
+        public static bool IsAutostartEnabled()
+        {
+            RegistryKey? key = Registry.CurrentUser.OpenSubKey(AutostartRegistryPath, false);
+            return key?.GetValue(AppName) != null;
         }
     }
 

@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.Win32;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 
-namespace KameraControl
+namespace KameraSteuerungDeLuxe
 {
     public partial class SettingsWindow : Window
     {
@@ -20,6 +22,9 @@ namespace KameraControl
             PowerOnPresetBox.Text = _settings.PresetCameraOn;
             ShowWindowOnStartup.IsChecked = _settings.OpenOnStart;
             HideOnClick.IsChecked = _settings.HideWindowOnClick;
+
+            //keine speicherung in der Settings, sondern in der Registry
+            WindowsAutostart.IsChecked = AppSettingsManager.IsAutostartEnabled();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -30,7 +35,7 @@ namespace KameraControl
             _settings.PresetCameraOn = PowerOnPresetBox.Text;
             _settings.OpenOnStart = ShowWindowOnStartup.IsChecked ?? false;
             _settings.HideWindowOnClick = HideOnClick.IsChecked ?? false;
-            AppSettingsManager.Save(_settings);
+            AppSettingsManager.Save(_settings, WindowsAutostart.IsChecked);
 
             DialogResult = true;
             Close();

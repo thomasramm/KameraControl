@@ -2,7 +2,7 @@
 using System.Windows.Data;
 using System.Windows;
 
-namespace KameraControl
+namespace KameraSteuerungDeLuxe
 {
     public class RemoveExtensionConverter : IValueConverter
     {

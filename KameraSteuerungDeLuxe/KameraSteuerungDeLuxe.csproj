@@ -8,6 +8,8 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <Platforms>AnyCPU;x86;x64</Platforms>
+    <Title>KameraSteuerung DeLuxe</Title>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -57,6 +59,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icon.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\2 Personen 01.png" />
     <Resource Include="images\2 Personen 02.png" />
     <Resource Include="images\2 Personen 03.png" />
@@ -70,16 +86,6 @@
     <Resource Include="images\Kamera An.png" />
     <Resource Include="images\Kamera Aus.png" />
     <Resource Include="images\power_on.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="icon.ico">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="images\power_off.png" />
     <Resource Include="images\Redner 01.png" />
     <Resource Include="images\Redner 02.png" />

@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using System.Xml.Serialization;
 
-namespace KameraControl
+namespace KameraSteuerungDeLuxe
 {
     [Serializable]
     public class DisplayButton : INotifyPropertyChanged
