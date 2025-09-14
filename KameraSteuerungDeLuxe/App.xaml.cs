@@ -5,7 +5,7 @@ using System.Windows.Media;
 using System.ComponentModel;
 
 
-namespace KameraControl
+namespace KameraSteuerungDeLuxe
 {
     /// <summary>
     /// Interaction logic for App.xaml

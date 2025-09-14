@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace KameraControl
+namespace KameraSteuerungDeLuxe
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

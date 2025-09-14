@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace KameraControl
+namespace KameraSteuerungDeLuxe
 {
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -15,21 +15,6 @@ namespace KameraControl
         public AppSettings Settings { get; set; }
 
         public ObservableCollection<DisplayButton> Buttons => Settings.DisplayButtons;
-
-        public Orientation Ausrichtung => Settings.WindowIsHorizontalDesign ? Orientation.Horizontal : Orientation.Vertical;
-
-        public DisplayButton DayPresetButton 
-        {
-            get => Settings.DayPresetButton;
-            set
-            {
-                if (Settings.DayPresetButton != value)
-                {
-                    Settings.DayPresetButton = value;
-                    OnPropertyChanged(nameof(DayPresetButton));
-                }
-            }
-        }
 
         public RelayCommand ButtonClickCommand { get; }
 

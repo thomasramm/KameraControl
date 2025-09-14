@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace KameraControl
+namespace KameraSteuerungDeLuxe
 {
     public class SettingsWindowViewModel : INotifyPropertyChanged
     {
