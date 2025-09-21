@@ -23,7 +23,7 @@
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
             <!-- Konfigurierbare Button -->
         <ItemsControl Grid.Column="0" 
@@ -35,7 +35,8 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Width="80" Visibility="{Binding Aktiviert, Converter={StaticResource BoolToVisibilityConverter}}" Margin="1" 
+                    <Button Width="80" Visibility="{Binding Aktiviert, Converter={StaticResource BoolToVisibilityConverter}}" 
+                            Margin="1" 
                             Background="{Binding Background, Mode=OneWay}"
                             Command="{Binding DataContext.ButtonClickCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                             CommandParameter="{Binding}">
@@ -56,14 +57,24 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <!-- Power und Einstellungen -->
+        <!-- Power und Manueller Zoom/Pan -->
         <StackPanel Grid.Column="1" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Center">
             <Button Width="80" Height="80"
                     Margin="1"
-                Background="#226084" 
-                Command="{Binding ButtonPowerOnCommand}">
+                    Background="#226084" 
+                    Command="{Binding ButtonManualMoveCommand}"
+                    Visibility="{Binding ManualControlButtonIsEnabled, Converter={StaticResource BoolToVisibilityConverter}}">
+                <StackPanel Orientation="Vertical" Margin="0,0,0,0">
+                    <Image Source="/images/manuell.png" Height="38" Margin="8"/>
+                    <TextBlock Text="Manuell" Foreground="White" FontSize="15" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <Button Width="80" Height="80"
+                    Margin="1"
+                    Background="#226084" 
+                    Command="{Binding ButtonPowerOnCommand}">
                 <StackPanel Orientation="Vertical" Margin="0,0,0,0">
                     <Image Source="/images/power_on.png" Height="50"/>
                     <TextBlock Text="An" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>

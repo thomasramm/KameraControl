@@ -22,6 +22,7 @@ namespace KameraSteuerungDeLuxe
             PowerOnPresetBox.Text = _settings.PresetCameraOn;
             ShowWindowOnStartup.IsChecked = _settings.OpenOnStart;
             HideOnClick.IsChecked = _settings.HideWindowOnClick;
+            ShowManualControlWindow.IsChecked = _settings.ShowManualControlWindow;
 
             //keine speicherung in der Settings, sondern in der Registry
             WindowsAutostart.IsChecked = AppSettingsManager.IsAutostartEnabled();
@@ -35,6 +36,7 @@ namespace KameraSteuerungDeLuxe
             _settings.PresetCameraOn = PowerOnPresetBox.Text;
             _settings.OpenOnStart = ShowWindowOnStartup.IsChecked ?? false;
             _settings.HideWindowOnClick = HideOnClick.IsChecked ?? false;
+            _settings.ShowManualControlWindow = ShowManualControlWindow.IsChecked ?? false;
             AppSettingsManager.Save(_settings, WindowsAutostart.IsChecked);
 
             DialogResult = true;

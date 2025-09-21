@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using KameraSteuerungDeLuxe.Properties;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -33,6 +34,11 @@ namespace KameraSteuerungDeLuxe
         {
             _model.Settings.OpenPositionX = this.Left;
             _model.Settings.OpenPositionY = this.Top;
+        }
+
+        public void Refresh()
+        {
+            _model.ManualControlButtonIsEnabled = true;
         }
     }
 }

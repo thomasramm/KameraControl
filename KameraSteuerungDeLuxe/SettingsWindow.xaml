@@ -7,7 +7,7 @@
         Title="Einstellungen" Height="710" Width="370"
         Background="#1e1e1e"
         mc:Ignorable="d" 
-        d:DataContext="{d:DesignInstance Type=local:SettingsWindowViewModel }">
+        d:DataContext="{d:DesignInstance Type=local:SettingsWindowViewModel}">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="White" />
@@ -71,6 +71,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
@@ -143,7 +144,12 @@
           Content="Fenster Ausblenden nach Click" 
           Foreground="White"
           VerticalContentAlignment="Center"/>
-        <ItemsControl Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5"
+        <CheckBox Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                  x:Name="ShowManualControlWindow"
+                  Content="Manuelle Steuerung ermöglichen"
+                  VerticalContentAlignment="Center"
+                  Foreground="White"/>
+        <ItemsControl Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6"
             ItemsSource="{Binding Buttons}" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -213,10 +219,10 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <Button Grid.Row="6" Grid.Column="0" 
+        <Button Grid.Row="7" Grid.Column="0" 
                 Content="Abbrechen" 
                 Click="Cancel_Click" Margin="0,0,0,0" />
-        <Button Grid.Row="6" Grid.Column="1" 
+        <Button Grid.Row="7" Grid.Column="1" 
         Content="Speichern" 
         Click="Save_Click" Margin="0,0,0,0" />
     </Grid>

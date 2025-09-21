@@ -78,7 +78,9 @@ namespace KameraSteuerungDeLuxe
         {
             // Beispiel: ein Settings-Fenster öffnen
             var settingsWindow = new SettingsWindow(_settings);
-            settingsWindow.ShowDialog();
+            var result = settingsWindow.ShowDialog();
+            if (result == true)
+                mainWindow?.Refresh();
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)

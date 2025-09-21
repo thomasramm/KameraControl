@@ -12,9 +12,15 @@ namespace KameraSteuerungDeLuxe
 
         public bool HideWindowOnClick { get; set; } = false;
 
+        public bool ShowManualControlWindow { get; set; } = true;
+
         public double OpenPositionX { get; set; } = 0;
 
         public double OpenPositionY { get; set; } = 0;
+
+        public double OpenManualWindowPositionLeft { get; set; } = 0;
+
+        public double OpenManualWindowPositionTop { get; set; } = 0;
 
         public string CameraIP { get; set; } = "10.0.1.41";
 
