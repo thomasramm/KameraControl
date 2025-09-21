@@ -1,5 +1,4 @@
-﻿using KameraSteuerungDeLuxe.Properties;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 

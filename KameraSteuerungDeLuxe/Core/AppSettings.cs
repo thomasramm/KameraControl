@@ -5,7 +5,7 @@ using System.IO;
 using System.Xml.Serialization;
 
 namespace KameraSteuerungDeLuxe
-{ 
+{
     public class AppSettings
     {
         public bool OpenOnStart { get; set; } = true;
@@ -38,10 +38,10 @@ namespace KameraSteuerungDeLuxe
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
             "KameraSteuerungDeLuxe",
             "Settings.xml");
+
         private static readonly string AppName = "KameraSteuerungDeLuxe";
         private static readonly string AutostartRegistryPath = @"Software\Microsoft\Windows\CurrentVersion\Run";
         private static readonly string shortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), AppName + ".lnk");
-
 
         public static void Save(AppSettings settings, bool? autostartEnabled = null)
         {
@@ -85,7 +85,6 @@ namespace KameraSteuerungDeLuxe
             {
                 settings ??= new AppSettings();
                 LoadDefaultConfig(settings);
-
             }
 
             return settings;
@@ -116,7 +115,7 @@ namespace KameraSteuerungDeLuxe
             if (enabled == null) return;
 
             if (enabled == true)
-            { 
+            {
                 WshShell shell = new WshShell();
                 IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutPath);
                 shortcut.Description = $"Startet {AppName} beim Windows-Start";
@@ -124,11 +123,12 @@ namespace KameraSteuerungDeLuxe
                 shortcut.WorkingDirectory = Path.GetDirectoryName(shortcut.TargetPath);
                 shortcut.Save();
             }
-            else 
-            { 
-                System.IO.File.Delete(shortcutPath); 
+            else
+            {
+                System.IO.File.Delete(shortcutPath);
             }
         }
+
         private static void SetAutostartEnabledWithRegistry(bool? enabled)
         {
             RegistryKey? key = Registry.CurrentUser.OpenSubKey(AutostartRegistryPath, true);
@@ -144,7 +144,6 @@ namespace KameraSteuerungDeLuxe
                     key.DeleteValue("KameraSteuerungDeLuxe");
                 }
             }
-
         }
 
         public static bool IsAutostartEnabled()
@@ -163,5 +162,4 @@ namespace KameraSteuerungDeLuxe
             return key?.GetValue(AppName) != null;
         }
     }
-
 }

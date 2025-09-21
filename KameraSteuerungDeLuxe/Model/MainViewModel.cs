@@ -35,11 +35,11 @@ namespace KameraSteuerungDeLuxe
 
         public bool ManualControlButtonIsEnabled
         {
-            get 
-            { 
-                return Settings.ShowManualControlWindow; 
+            get
+            {
+                return Settings.ShowManualControlWindow;
             }
-            set 
+            set
             {
                 OnPropertyChanged();
             }

@@ -1,9 +1,6 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
-using System.Windows;
-using WinForms = System.Windows.Forms;
-using System.Windows.Media;
 using System.ComponentModel;
-
+using System.Windows;
 
 namespace KameraSteuerungDeLuxe
 {
@@ -13,7 +10,7 @@ namespace KameraSteuerungDeLuxe
     public partial class App : Application
     {
         private TaskbarIcon? _trayIcon;
-        MainWindow? mainWindow = null;
+        private MainWindow? mainWindow = null;
         private AppSettings _settings;
 
         public App()
@@ -89,7 +86,7 @@ namespace KameraSteuerungDeLuxe
             Shutdown();
         }
 
-        void MainWindowShow()
+        private void MainWindowShow()
         {
             if (mainWindow == null || !mainWindow.IsVisible)
             {
@@ -104,7 +101,6 @@ namespace KameraSteuerungDeLuxe
 
                 mainWindow.Show();
                 mainWindow.Activate();
-
             }
             else
             {
@@ -113,4 +109,3 @@ namespace KameraSteuerungDeLuxe
         }
     }
 }
-
