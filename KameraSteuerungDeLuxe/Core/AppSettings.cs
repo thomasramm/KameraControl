@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using IWshRuntimeLibrary;
+using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml.Serialization;
@@ -33,8 +34,10 @@ namespace KameraSteuerungDeLuxe
             "Settings.xml");
         private static readonly string AppName = "KameraSteuerungDeLuxe";
         private static readonly string AutostartRegistryPath = @"Software\Microsoft\Windows\CurrentVersion\Run";
+        private static readonly string shortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), AppName + ".lnk");
 
-        public static void Save(AppSettings settings, bool? autostartEnabled)
+
+        public static void Save(AppSettings settings, bool? autostartEnabled = null)
         {
             try
             {
@@ -44,7 +47,8 @@ namespace KameraSteuerungDeLuxe
                 using var writer = new StreamWriter(FilePath);
                 serializer.Serialize(writer, settings);
 
-                SetAutostartEnabled(autostartEnabled);
+                if (autostartEnabled.HasValue)
+                    SetAutostartEnabled(autostartEnabled);
             }
             catch (Exception ex)
             {
@@ -59,7 +63,7 @@ namespace KameraSteuerungDeLuxe
 
             try
             {
-                if (File.Exists(FilePath))
+                if (System.IO.File.Exists(FilePath))
                 {
                     var serializer = new XmlSerializer(typeof(AppSettings));
                     using var reader = new StreamReader(FilePath);
@@ -98,6 +102,29 @@ namespace KameraSteuerungDeLuxe
 
         public static void SetAutostartEnabled(bool? enabled)
         {
+            SetAutostartEnabledWithAppShortcut(enabled);
+        }
+
+        private static void SetAutostartEnabledWithAppShortcut(bool? enabled)
+        {
+            if (enabled == null) return;
+
+            if (enabled == true)
+            { 
+                WshShell shell = new WshShell();
+                IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutPath);
+                shortcut.Description = $"Startet {AppName} beim Windows-Start";
+                shortcut.TargetPath = Environment.ProcessPath;
+                shortcut.WorkingDirectory = Path.GetDirectoryName(shortcut.TargetPath);
+                shortcut.Save();
+            }
+            else 
+            { 
+                System.IO.File.Delete(shortcutPath); 
+            }
+        }
+        private static void SetAutostartEnabledWithRegistry(bool? enabled)
+        {
             RegistryKey? key = Registry.CurrentUser.OpenSubKey(AutostartRegistryPath, true);
 
             if (enabled == true)
@@ -115,6 +142,16 @@ namespace KameraSteuerungDeLuxe
         }
 
         public static bool IsAutostartEnabled()
+        {
+            return IsAutostartEnabledWithAppShortcut();
+        }
+
+        private static bool IsAutostartEnabledWithAppShortcut()
+        {
+            return System.IO.File.Exists(shortcutPath);
+        }
+
+        private static bool IsAutostartEnabledWithRegistry()
         {
             RegistryKey? key = Registry.CurrentUser.OpenSubKey(AutostartRegistryPath, false);
             return key?.GetValue(AppName) != null;
