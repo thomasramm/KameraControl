@@ -1,19 +1,21 @@
 # KameraControl
 <img width="600" height="102" alt="Screenshot (1)" src="https://github.com/user-attachments/assets/4b4cfe15-6740-4ed2-b385-9a7c116540a3" />
 
-Vereinfachte Steuerung von PTZ Kameras ohne lästige Fernbedienung
+Vereinfachte Steuerung von PTZ Kameras ohne lÃ¤stige Fernbedienung
 
-Dieses Tool Unterstützt die Steuerung von PTZ Kameras. 
-Gespeicherte Presets können angefahren werden, wodurch eine vereinfachte Bedienung bei Szenenwechsel möglich ist.
-Das Programm ist ausgelegt und optimiert für den Einsatz von Zusammenkünften von Jehovas Zeugen.
-Die Eingesetzte Kamera muss für das Anfahren von Positionen folgendes URL Format unterstützen:
+Dieses Tool UnterstÃ¼tzt die Steuerung von PTZ Kameras. 
+Gespeicherte Presets kÃ¶nnen angefahren werden, wodurch eine vereinfachte Bedienung bei Szenenwechsel mÃ¶glich ist.
+Das Programm ist ausgelegt und optimiert fÃ¼r den Einsatz von ZusammenkÃ¼nften von Jehovas Zeugen.
+Die Eingesetzte Kamera muss fÃ¼r das Anfahren von Positionen folgendes URL Format unterstÃ¼tzen:
+
 "http://{ip}/cgi-bin/ptzctrl.cgi?ptzcmd&poscall&{position}"
 
 Weitere Funktionein sind das An- und Ausschalten der Kamera.
 
 ## Installation
 
-Nach der Installation über den Microsoft Store findest du einen Eintrag in deinem Startmenü.
+Nach der Installation Ã¼ber den Microsoft Store findest du einen Eintrag in deinem StartmenÃ¼.
+
 Nach dem Programmstart erscheint ein kleines Kamerasymbol in deiner Taskleiste.
 Falls das Symbol erst mit klick auf die "weiteren Symbole" angezeigt wird, kannst du Einstellen das dieses Symbol direkt auf der Taskleiste angezeigt werden soll.
 Gehe dazu auf 
@@ -23,16 +25,16 @@ Gehe dazu auf
 
 ## Einrichtung
 
-Über das Kontextmenü des Taskleistensymbol (rechte Maustaste auf das Symbol) kannst du die Einstellungen öffnen.
-* Trage die IP Adresse und den Port ein, über den die Kamera erreichbar ist.
-* Konfiguriere dir beliebig viele Presets mit passenden Namen und Symbol, die du nicht benötigst kannst du ausblenden.
+Ãœber das KontextmenÃ¼ des Taskleistensymbol (rechte Maustaste auf das Symbol) kannst du die Einstellungen Ã¶ffnen.
+* Trage die IP Adresse und den Port ein, Ã¼ber den die Kamera erreichbar ist.
+* Konfiguriere dir beliebig viele Presets mit passenden Namen und Symbol, die du nicht benÃ¶tigst kannst du ausblenden.
 * Speichere deine Einstellungen
   
 <img width="617" height="882" alt="Screenshot (3)" src="https://github.com/user-attachments/assets/c003a72c-12c2-4823-82b3-26c29ea07645" /> 
 
 # Bedienung
-Mit einem klick auf das Taskleistensymbol öffnet sich die Oberfläche
-Wähle die gewünschte Kameraeinstellung durch klicken auf das Symbol aus.
+Mit einem klick auf das Taskleistensymbol Ã¶ffnet sich die OberflÃ¤che
+WÃ¤hle die gewÃ¼nschte Kameraeinstellung durch klicken auf das Symbol aus.
 
-Die aktuell gewählte Szene wird rot hervorgehoben.
-Je nach Einstellung schließt die Oberfläche nach 2 Sekunden von selber, oder sie bleibt offen bis du sie selber schließt. (Diese Einstellung kann angepasst werden).
+Die aktuell gewÃ¤hlte Szene wird rot hervorgehoben.
+Je nach Einstellung schlieÃŸt die OberflÃ¤che nach 2 Sekunden von selber, oder sie bleibt offen bis du sie selber schlieÃŸt. (Diese Einstellung kann angepasst werden).
