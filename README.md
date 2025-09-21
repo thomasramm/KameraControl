@@ -7,6 +7,7 @@ Dieses Tool Unterstützt die Steuerung von PTZ Kameras.
 Gespeicherte Presets können angefahren werden, wodurch eine vereinfachte Bedienung bei Szenenwechsel möglich ist.
 Das Programm ist ausgelegt und optimiert für den Einsatz von Zusammenkünften von Jehovas Zeugen.
 Die Eingesetzte Kamera muss für das Anfahren von Positionen folgendes URL Format unterstützen:
+
 "http://{ip}/cgi-bin/ptzctrl.cgi?ptzcmd&poscall&{position}"
 
 Weitere Funktionein sind das An- und Ausschalten der Kamera.
@@ -14,6 +15,7 @@ Weitere Funktionein sind das An- und Ausschalten der Kamera.
 ## Installation
 
 Nach der Installation über den Microsoft Store findest du einen Eintrag in deinem Startmenü.
+
 Nach dem Programmstart erscheint ein kleines Kamerasymbol in deiner Taskleiste.
 Falls das Symbol erst mit klick auf die "weiteren Symbole" angezeigt wird, kannst du Einstellen das dieses Symbol direkt auf der Taskleiste angezeigt werden soll.
 Gehe dazu auf 

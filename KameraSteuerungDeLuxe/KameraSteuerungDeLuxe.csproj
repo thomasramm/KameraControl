@@ -1,0 +1,125 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <Platforms>AnyCPU;x86;x64</Platforms>
+    <Title>KameraSteuerung DeLuxe</Title>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="images\2 Personen 01.png" />
+    <None Remove="images\2 Personen 02.png" />
+    <None Remove="images\2 Personen 03.png" />
+    <None Remove="images\2 Personen 04.png" />
+    <None Remove="images\Bühne 01.png" />
+    <None Remove="images\Bühne 02.png" />
+    <None Remove="images\Bühne 03.png" />
+    <None Remove="images\Bühne 04.png" />
+    <None Remove="images\close.png" />
+    <None Remove="images\einstellungen.png" />
+    <None Remove="images\Kamera An.png" />
+    <None Remove="images\Kamera Aus.png" />
+    <None Remove="images\leser.png" />
+    <None Remove="images\leser_zoom.png" />
+    <None Remove="images\power_off.png" />
+    <None Remove="images\power_on.png" />
+    <None Remove="images\Redner 01.png" />
+    <None Remove="images\Redner 02.png" />
+    <None Remove="images\Redner 03.png" />
+    <None Remove="images\Redner 04.png" />
+    <None Remove="images\Redner 05.png" />
+    <None Remove="images\Redner Leser 01.png" />
+    <None Remove="images\Redner Leser 02.png" />
+    <None Remove="images\redner.png" />
+    <None Remove="images\redner_zoom.png" />
+    <None Remove="images\saal.png" />
+    <None Remove="images\Stil B 01.png" />
+    <None Remove="images\Stil B 02.png" />
+    <None Remove="images\Stil B 03.png" />
+    <None Remove="images\Stil B 04.png" />
+    <None Remove="images\Stil B 05.png" />
+    <None Remove="images\Stil B 06.png" />
+    <None Remove="images\Tisch 01.png" />
+    <None Remove="images\Tisch 02.png" />
+    <None Remove="images\Tisch 03.png" />
+    <None Remove="images\Tisch 04.png" />
+    <None Remove="images\tisch.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icon.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\2 Personen 01.png" />
+    <Resource Include="images\2 Personen 02.png" />
+    <Resource Include="images\2 Personen 03.png" />
+    <Resource Include="images\2 Personen 04.png" />
+    <Resource Include="images\Bühne 01.png" />
+    <Resource Include="images\Bühne 02.png" />
+    <Resource Include="images\Bühne 03.png" />
+    <Resource Include="images\Bühne 04.png" />
+    <Resource Include="images\close.png" />
+    <Resource Include="images\einstellungen.png" />
+    <Resource Include="images\Kamera An.png" />
+    <Resource Include="images\Kamera Aus.png" />
+    <Resource Include="images\power_on.png" />
+    <Resource Include="images\power_off.png" />
+    <Resource Include="images\Redner 01.png" />
+    <Resource Include="images\Redner 02.png" />
+    <Resource Include="images\Redner 03.png" />
+    <Resource Include="images\Redner 04.png" />
+    <Resource Include="images\Redner 05.png" />
+    <Resource Include="images\Redner Leser 01.png" />
+    <Resource Include="images\Redner Leser 02.png" />
+    <Resource Include="images\Stil B 01.png" />
+    <Resource Include="images\Stil B 02.png" />
+    <Resource Include="images\Stil B 03.png" />
+    <Resource Include="images\Stil B 04.png" />
+    <Resource Include="images\Stil B 05.png" />
+    <Resource Include="images\Stil B 06.png" />
+    <Resource Include="images\Tisch 01.png" />
+    <Resource Include="images\Tisch 02.png" />
+    <Resource Include="images\Tisch 03.png" />
+    <Resource Include="images\Tisch 04.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+
+</Project>

@@ -1,0 +1,26 @@
+﻿<Application x:Class="KameraSteuerungDeLuxe.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:KameraSteuerungDeLuxe"
+             xmlns:tb="clr-namespace:Hardcodet.Wpf.TaskbarNotification;assembly=Hardcodet.NotifyIcon.Wpf"
+             Startup="Application_Startup"
+             ShutdownMode="OnExplicitShutdown">
+    <Application.Resources>
+        <tb:TaskbarIcon x:Key="TrayIcon"
+                        IconSource="/icon.ico"
+                        ToolTipText="Kamera Steuerung">
+            <!-- Kontextmenü -->
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Fenster anzeigen/verstecken"
+                              Click="MenuItem_ToggleWindow_Click"/>
+                    <MenuItem Header="Einstellungen"
+                              Click="MenuItem_Settings_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Beenden"
+                              Click="MenuItem_Exit_Click"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+    </Application.Resources>
+</Application>
