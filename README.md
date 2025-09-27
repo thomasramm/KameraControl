@@ -10,7 +10,7 @@ Die Eingesetzte Kamera muss für das Anfahren von Positionen folgendes URL Forma
 
 "http://{ip}/cgi-bin/ptzctrl.cgi?ptzcmd&poscall&{position}"
 
-Weitere Funktionein sind das An- und Ausschalten der Kamera.
+Weitere Funktionein sind das An- und Ausschalten der Kamera, sowie die manuelle Steuerung der Kamera.
 
 ## Installation
 
