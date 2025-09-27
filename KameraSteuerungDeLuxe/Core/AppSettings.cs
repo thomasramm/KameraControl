@@ -30,6 +30,8 @@ namespace KameraSteuerungDeLuxe
         public string PresetCameraOn { get; set; } = "1";
 
         public string PresetCameraOff { get; set; } = "9";
+
+        public int Speed { get; set; } = 5;
     }
 
     public static class AppSettingsManager

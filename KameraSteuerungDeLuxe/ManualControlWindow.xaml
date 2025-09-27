@@ -6,12 +6,11 @@
         xmlns:local="clr-namespace:KameraSteuerungDeLuxe"
         mc:Ignorable="d"
         Height="200"
-        Width="150"
+        Width="180"
         WindowStyle="None"
         Topmost="True"
         ShowInTaskbar="False"
         ResizeMode="NoResize"
-        d:DataContext="{d:DesignInstance Type=local:ManualControlViewModel}"
         Title="Kamera Steuerung"
         Background="#222"
         MouseDown="Window_MouseDown"
@@ -68,12 +67,15 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="30" />
         </Grid.ColumnDefinitions>
-        <Button Grid.Row="0" Grid.Column="1" Content="▲" Command="{Binding UpCommand}" />
-        <Button Grid.Row="1" Grid.Column="0" Content="◀" Command="{Binding LeftCommand}" />
-        <Button Grid.Row="1" Grid.Column="2" Content="▶" Command="{Binding RightCommand}" />
-        <Button Grid.Row="2" Grid.Column="1" Content="▼" Command="{Binding DownCommand}" />
-        <Button Grid.Row="3" Grid.Column="0" Command="{Binding ZoomOutCommand}">
+        <Button Grid.Row="0" Grid.Column="1" Content="▲" x:Name="ButtonUp" PreviewMouseLeftButtonDown="ButtonUp_MouseLeftButtonDown" PreviewMouseLeftButtonUp="ButtonAll_MouseLeftButtonUp" />
+        <Button Grid.Row="1" Grid.Column="0" Content="◀" x:Name="ButtonLeft" PreviewMouseLeftButtonDown="ButtonLeft_MouseLeftButtonDown" PreviewMouseLeftButtonUp="ButtonAll_MouseLeftButtonUp" />
+        <Button Grid.Row="1" Grid.Column="2" Content="▶" x:Name="ButtonRight" PreviewMouseLeftButtonDown="ButtonRight_MouseLeftButtonDown" PreviewMouseLeftButtonUp="ButtonAll_MouseLeftButtonUp" />
+        <Button Grid.Row="2" Grid.Column="1" Content="▼" x:Name="ButtonDown" PreviewMouseLeftButtonDown="ButtonDown_MouseLeftButtonDown" PreviewMouseLeftButtonUp="ButtonAll_MouseLeftButtonUp" />
+        <Button Grid.Row="3" Grid.Column="0" x:Name="ButtonZoomOut"
+                PreviewMouseLeftButtonDown="ButtonZoomOut_MouseLeftButtonDown"
+                PreviewMouseLeftButtonUp="ButtonZoom_MouseLeftButtonUp">
             <Image Source="/images/minus_128x128.png" Width="30" Height="30" />
         </Button>
         <TextBlock Grid.Row="3" Grid.Column="1"
@@ -82,8 +84,42 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    FontSize="16" />
-        <Button Grid.Row="3" Grid.Column="2" Command="{Binding ZoomInCommand}">
+        <Button Grid.Row="3" Grid.Column="2" x:Name="ButtonZoomIn"
+                PreviewMouseLeftButtonDown="ButtonZoomIn_MouseLeftButtonDown"
+                PreviewMouseLeftButtonUp="ButtonZoom_MouseLeftButtonUp">
             <Image Source="/images/plus_128x128.png" Width="30" Height="30" />
         </Button>
+        <!-- Geschwindigkeit -->
+        <TextBlock Grid.Row="0" Grid.Column="3"
+                   Text="🐇"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="20"
+                   Margin="0"
+                   Foreground="#226084"
+                   MouseLeftButtonDown="SymbolFastLeftButtonDown" />
+
+        <!-- Slider -->
+        <Slider Grid.Row="0" Grid.Column="3" Grid.RowSpan="4"
+                Orientation="Vertical"
+                x:Name="SpeedSlider"
+                Minimum="1"
+                Maximum="9"
+                Value="5"
+                TickFrequency="1"
+                IsSnapToTickEnabled="True"
+                HorizontalAlignment="Center"
+                Margin="0,30,0,20"
+                ValueChanged="SpeedSlider_ValueChanged" />
+
+        <!-- Symbol für schnell -->
+        <TextBlock Grid.Row="3" Grid.Column="3"
+                   Text="🐢"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="20"
+                   Margin="0"
+                   Foreground="#226084"
+                   MouseLeftButtonDown="SymbolSlowLeftButtonDown" />
     </Grid>
 </Window>
