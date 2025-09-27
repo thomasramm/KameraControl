@@ -17,16 +17,22 @@
     <None Remove="images\2 Personen 02.png" />
     <None Remove="images\2 Personen 03.png" />
     <None Remove="images\2 Personen 04.png" />
+    <None Remove="images\auge_128x128.png" />
+    <None Remove="images\beenden_128x128.png" />
     <None Remove="images\Bühne 01.png" />
     <None Remove="images\Bühne 02.png" />
     <None Remove="images\Bühne 03.png" />
     <None Remove="images\Bühne 04.png" />
     <None Remove="images\close.png" />
     <None Remove="images\einstellungen.png" />
+    <None Remove="images\einstellungen_128x128.png" />
     <None Remove="images\Kamera An.png" />
     <None Remove="images\Kamera Aus.png" />
     <None Remove="images\leser.png" />
     <None Remove="images\leser_zoom.png" />
+    <None Remove="images\Manuell.png" />
+    <None Remove="images\minus_128x128.png" />
+    <None Remove="images\plus_128x128.png" />
     <None Remove="images\power_off.png" />
     <None Remove="images\power_on.png" />
     <None Remove="images\Redner 01.png" />
@@ -50,6 +56,18 @@
     <None Remove="images\Tisch 03.png" />
     <None Remove="images\Tisch 04.png" />
     <None Remove="images\tisch.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>f935dc20-1cf0-11d0-adb9-00c04fd58a0b</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -77,14 +95,20 @@
     <Resource Include="images\2 Personen 02.png" />
     <Resource Include="images\2 Personen 03.png" />
     <Resource Include="images\2 Personen 04.png" />
+    <Resource Include="images\auge_128x128.png" />
+    <Resource Include="images\beenden_128x128.png" />
     <Resource Include="images\Bühne 01.png" />
     <Resource Include="images\Bühne 02.png" />
     <Resource Include="images\Bühne 03.png" />
     <Resource Include="images\Bühne 04.png" />
     <Resource Include="images\close.png" />
     <Resource Include="images\einstellungen.png" />
+    <Resource Include="images\einstellungen_128x128.png" />
     <Resource Include="images\Kamera An.png" />
     <Resource Include="images\Kamera Aus.png" />
+    <Resource Include="images\Manuell.png" />
+    <Resource Include="images\minus_128x128.png" />
+    <Resource Include="images\plus_128x128.png" />
     <Resource Include="images\power_on.png" />
     <Resource Include="images\power_off.png" />
     <Resource Include="images\Redner 01.png" />

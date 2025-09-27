@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
-using System.Windows.Data;
 using System.Windows;
+using System.Windows.Data;
 
 namespace KameraSteuerungDeLuxe
 {
@@ -9,7 +9,7 @@ namespace KameraSteuerungDeLuxe
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is string filename)
-                return filename.Replace("images/","").Replace(".png","");
+                return filename.Replace("images/", "").Replace(".png", "");
             return value;
         }
 
@@ -65,7 +65,6 @@ namespace KameraSteuerungDeLuxe
 
             if (parameter is string h)
                 height = int.Parse(h);
-
 
             return flag ? height : 0;
         }

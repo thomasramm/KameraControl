@@ -7,7 +7,7 @@ namespace KameraSteuerungDeLuxe
     public class SettingsWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
-    
+
         private readonly AppSettings _settings;
 
         public SettingsWindowViewModel(AppSettings settings)

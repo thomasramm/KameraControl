@@ -1,0 +1,124 @@
+﻿<Window x:Class="KameraSteuerungDeLuxe.ManualControlWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KameraSteuerungDeLuxe"
+        mc:Ignorable="d"
+        Height="220"
+        Width="200"
+        WindowStyle="None"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        Title="Kamera Steuerung"
+        Background="#222"
+        MouseDown="Window_MouseDown"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#226084" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#bee6fd" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#c94453" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="#1a1a1a" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Grid.Row="1" Margin="10"
+              ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="30" />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="0" Grid.Column="1" Content="▲" x:Name="ButtonUp" PreviewMouseLeftButtonDown="ButtonUp_MouseLeftButtonDown" PreviewMouseLeftButtonUp="ButtonAll_MouseLeftButtonUp" />
+        <Button Grid.Row="1" Grid.Column="0" Content="◀" x:Name="ButtonLeft" PreviewMouseLeftButtonDown="ButtonLeft_MouseLeftButtonDown" PreviewMouseLeftButtonUp="ButtonAll_MouseLeftButtonUp" />
+        <Button Grid.Row="1" Grid.Column="2" Content="▶" x:Name="ButtonRight" PreviewMouseLeftButtonDown="ButtonRight_MouseLeftButtonDown" PreviewMouseLeftButtonUp="ButtonAll_MouseLeftButtonUp" />
+        <Button Grid.Row="2" Grid.Column="1" Content="▼" x:Name="ButtonDown" PreviewMouseLeftButtonDown="ButtonDown_MouseLeftButtonDown" PreviewMouseLeftButtonUp="ButtonAll_MouseLeftButtonUp" />
+        <Button Grid.Row="3" Grid.Column="0" x:Name="ButtonZoomOut"
+                PreviewMouseLeftButtonDown="ButtonZoomOut_MouseLeftButtonDown"
+                PreviewMouseLeftButtonUp="ButtonZoom_MouseLeftButtonUp">
+            <Image Source="/images/minus_128x128.png" Width="30" Height="30" />
+        </Button>
+        <TextBlock Grid.Row="3" Grid.Column="1"
+                   Text="Zoom"
+                   Foreground="White"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="16" />
+        <Button Grid.Row="3" Grid.Column="2" x:Name="ButtonZoomIn"
+                PreviewMouseLeftButtonDown="ButtonZoomIn_MouseLeftButtonDown"
+                PreviewMouseLeftButtonUp="ButtonZoom_MouseLeftButtonUp">
+            <Image Source="/images/plus_128x128.png" Width="30" Height="30" />
+        </Button>
+        <!-- Geschwindigkeit -->
+        <TextBlock Grid.Row="0" Grid.Column="3"
+                   Text="🐇"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="20"
+                   Margin="0"
+                   Foreground="#226084"
+                   MouseLeftButtonDown="SymbolFastLeftButtonDown" />
+
+        <!-- Slider -->
+        <Slider Grid.Row="0" Grid.Column="3" Grid.RowSpan="4"
+                Orientation="Vertical"
+                x:Name="SpeedSlider"
+                Minimum="1"
+                Maximum="9"
+                Value="5"
+                TickFrequency="1"
+                IsSnapToTickEnabled="True"
+                HorizontalAlignment="Center"
+                Margin="0,30,0,20"
+                ValueChanged="SpeedSlider_ValueChanged" />
+
+        <!-- Symbol für schnell -->
+        <TextBlock Grid.Row="3" Grid.Column="3"
+                   Text="🐢"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="20"
+                   Margin="0"
+                   Foreground="#226084"
+                   MouseLeftButtonDown="SymbolSlowLeftButtonDown" />
+    </Grid>
+</Window>

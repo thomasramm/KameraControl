@@ -6,8 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="Einstellungen" Height="710" Width="370"
         Background="#1e1e1e"
-        mc:Ignorable="d" 
-        d:DataContext="{d:DesignInstance Type=local:SettingsWindowViewModel }">
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:SettingsWindowViewModel}">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="White" />
@@ -66,85 +66,91 @@
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160"/>
-            <ColumnDefinition Width="170"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Text="Kamera IP &amp; Port:"/>
-        <StackPanel Grid.Row="0" Grid.Column="1" 
+        <TextBlock Grid.Column="0" Text="Kamera IP &amp; Port:" />
+        <StackPanel Grid.Row="0" Grid.Column="1"
                     Orientation="Horizontal">
-            <TextBox Grid.Column="1" 
+            <TextBox Grid.Column="1"
                  x:Name="IpBox"
-                 Text="10.0.1.41" 
-                 Background="#2e2e2e" 
+                 Text="10.0.1.41"
+                 Background="#2e2e2e"
                  Foreground="White"
-                 FontSize="13" 
+                 FontSize="13"
                  Width="100"
-                 VerticalContentAlignment="Center"/>
-            <TextBlock Text=":" Margin="2,0"/>
-            <TextBox Width="63" 
+                 VerticalContentAlignment="Center" />
+            <TextBlock Text=":" Margin="2,0" />
+            <TextBox Width="63"
                         HorizontalAlignment="Left"
                         x:Name="PortBox"
-                        Text="5678" 
-                        Background="#2e2e2e" 
+                        Text="5678"
+                        Background="#2e2e2e"
                         Foreground="White"
-                        FontSize="13" VerticalContentAlignment="Center"/>
+                        FontSize="13" VerticalContentAlignment="Center" />
         </StackPanel>
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="Presets für Power On | Off:"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="Presets für Power On | Off:" />
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
             <ComboBox x:Name="PowerOnPresetBox" Width="80">
-                <ComboBoxItem Content="1"/>
-                <ComboBoxItem Content="2"/>
-                <ComboBoxItem Content="3"/>
-                <ComboBoxItem Content="4"/>
-                <ComboBoxItem Content="5"/>
-                <ComboBoxItem Content="6"/>
-                <ComboBoxItem Content="7"/>
-                <ComboBoxItem Content="8"/>
-                <ComboBoxItem Content="9"/>
-                <ComboBoxItem Content="0"/>
-                <ComboBoxItem Content="Deaktiviert"/>
+                <ComboBoxItem Content="1" />
+                <ComboBoxItem Content="2" />
+                <ComboBoxItem Content="3" />
+                <ComboBoxItem Content="4" />
+                <ComboBoxItem Content="5" />
+                <ComboBoxItem Content="6" />
+                <ComboBoxItem Content="7" />
+                <ComboBoxItem Content="8" />
+                <ComboBoxItem Content="9" />
+                <ComboBoxItem Content="0" />
+                <ComboBoxItem Content="Deaktiviert" />
             </ComboBox>
             <ComboBox x:Name="PowerOffPresetBox" Width="80" Margin="10,0,0,0">
-                <ComboBoxItem Content="1"/>
-                <ComboBoxItem Content="2"/>
-                <ComboBoxItem Content="3"/>
-                <ComboBoxItem Content="4"/>
-                <ComboBoxItem Content="5"/>
-                <ComboBoxItem Content="6"/>
-                <ComboBoxItem Content="7"/>
-                <ComboBoxItem Content="8"/>
-                <ComboBoxItem Content="9"/>
-                <ComboBoxItem Content="0"/>
-                <ComboBoxItem Content="Deaktiviert"/>
+                <ComboBoxItem Content="1" />
+                <ComboBoxItem Content="2" />
+                <ComboBoxItem Content="3" />
+                <ComboBoxItem Content="4" />
+                <ComboBoxItem Content="5" />
+                <ComboBoxItem Content="6" />
+                <ComboBoxItem Content="7" />
+                <ComboBoxItem Content="8" />
+                <ComboBoxItem Content="9" />
+                <ComboBoxItem Content="0" />
+                <ComboBoxItem Content="Deaktiviert" />
             </ComboBox>
         </StackPanel>
-        <CheckBox Grid.Row="2" x:Name="WindowsAutostart" 
-                  Content="Beim Start ausführen" 
+        <CheckBox Grid.Row="2" x:Name="WindowsAutostart"
+                  Content="Beim Start ausführen"
                   Foreground="White"
                   Grid.ColumnSpan="2"
-                  VerticalContentAlignment="Center"/>
-        <CheckBox Grid.Row="3" x:Name="ShowWindowOnStartup" 
-          Content="Fenster beim Starten anzeigen" 
+                  VerticalContentAlignment="Center" />
+        <CheckBox Grid.Row="3" x:Name="ShowWindowOnStartup"
+          Content="Fenster beim Starten anzeigen"
           Foreground="White"
           Grid.ColumnSpan="2"
-          VerticalContentAlignment="Center"/>
+          VerticalContentAlignment="Center" />
         <CheckBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
-                  x:Name="HideOnClick" 
-          Content="Fenster Ausblenden nach Click" 
+                  x:Name="HideOnClick"
+          Content="Fenster Ausblenden nach Click"
           Foreground="White"
-          VerticalContentAlignment="Center"/>
-        <ItemsControl Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5"
-            ItemsSource="{Binding Buttons}" >
+          VerticalContentAlignment="Center" />
+        <CheckBox Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                  x:Name="ShowManualControlWindow"
+                  Content="Manuelle Steuerung ermöglichen"
+                  VerticalContentAlignment="Center"
+                  Foreground="White" />
+        <ItemsControl Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6"
+            ItemsSource="{Binding Buttons}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
@@ -162,15 +168,15 @@
                                 <RowDefinition Height="50" />
                                 <RowDefinition Height="24" />
                             </Grid.RowDefinitions>
-                            <Image    Grid.Row="0" 
-                                      Source="{Binding IconUrl}" 
+                            <Image    Grid.Row="0"
+                                      Source="{Binding IconUrl}"
                                       HorizontalAlignment="Center" />
-                            <TextBox  Grid.Row="1" 
-                                      Text="{Binding Name, Mode=TwoWay}" 
-                                      Background="#226084" 
-                                      TextAlignment="Center" 
+                            <TextBox  Grid.Row="1"
+                                      Text="{Binding Name, Mode=TwoWay}"
+                                      Background="#226084"
+                                      TextAlignment="Center"
                                       FontSize="18"
-                                      Foreground="White"/>
+                                      Foreground="White" />
                         </Grid>
                         <Grid Grid.Row="1" Background="#143a51">
                             <Grid.RowDefinitions>
@@ -178,46 +184,46 @@
                                 <RowDefinition Height="20" />
                                 <RowDefinition Height="20" />
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" 
-                                      Text="Icon:" 
-                                      Margin="3" 
-                                      Foreground="White" 
+                            <TextBlock Grid.Row="0"
+                                      Text="Icon:"
+                                      Margin="3"
+                                      Foreground="White"
                                       HorizontalAlignment="Left" />
-                            <ComboBox Grid.Row="0" 
+                            <ComboBox Grid.Row="0"
                                       ItemsSource="{Binding DataContext.AvailableIcons, RelativeSource={RelativeSource AncestorType=Window}}"
                                       SelectedItem="{Binding Icon, Mode=TwoWay}"
-                                      Width="46" 
+                                      Width="46"
                                       Margin="0"
                                       Background="#102f41"
-                                      HorizontalAlignment="Right"/>
-                            <TextBlock Grid.Row="1" 
-                                      Text="Taste:" 
-                                      Margin="2" 
-                                      Foreground="White" 
+                                      HorizontalAlignment="Right" />
+                            <TextBlock Grid.Row="1"
+                                      Text="Taste:"
+                                      Margin="2"
+                                      Foreground="White"
                                       HorizontalAlignment="Left" />
-                            <ComboBox Grid.Row="1" 
+                            <ComboBox Grid.Row="1"
                                       ItemsSource="{Binding DataContext.AvailablePresets, RelativeSource={RelativeSource AncestorType=Window}}"
                                       SelectedItem="{Binding Preset, Mode=TwoWay}"
-                                      Width="46" 
+                                      Width="46"
                                       Background="#102f41"
                                       Margin="0,-2"
-                                      
-                                      HorizontalAlignment="Right"/>
-                            <CheckBox Grid.Row="2" 
+
+                                      HorizontalAlignment="Right" />
+                            <CheckBox Grid.Row="2"
                                       Margin="2,0"
-                                      Content="Anzeigen" 
-                                      IsChecked="{Binding Aktiviert, Mode=TwoWay}" 
-                                      Foreground="White"/>
+                                      Content="Anzeigen"
+                                      IsChecked="{Binding Aktiviert, Mode=TwoWay}"
+                                      Foreground="White" />
                         </Grid>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <Button Grid.Row="6" Grid.Column="0" 
-                Content="Abbrechen" 
+        <Button Grid.Row="7" Grid.Column="0"
+                Content="Abbrechen"
                 Click="Cancel_Click" Margin="0,0,0,0" />
-        <Button Grid.Row="6" Grid.Column="1" 
-        Content="Speichern" 
+        <Button Grid.Row="7" Grid.Column="1"
+        Content="Speichern"
         Click="Save_Click" Margin="0,0,0,0" />
     </Grid>
 </Window>

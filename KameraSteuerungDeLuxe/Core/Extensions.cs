@@ -90,4 +90,3 @@ public static class TextBlockExtensions
             1.0);
     }
 }
-
