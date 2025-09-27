@@ -15,9 +15,10 @@ namespace KameraSteuerungDeLuxe
         private bool _aktiv = false;
 
         public event PropertyChangedEventHandler? PropertyChanged;
-        
+
         public int Position { get; set; }
-        public string Name 
+
+        public string Name
         {
             get => _name;
             set
@@ -26,10 +27,11 @@ namespace KameraSteuerungDeLuxe
                 OnPropertyChanged();
             }
         }
-        public string Icon 
-        { 
+
+        public string Icon
+        {
             get => _icon;
-            set 
+            set
             {
                 _icon = value;
                 OnPropertyChanged();
@@ -61,7 +63,7 @@ namespace KameraSteuerungDeLuxe
 
         [XmlIgnore]
         public SolidColorBrush Background
-        { 
+        {
             get
             {
                 //return (SolidColorBrush)new BrushConverter().ConvertFrom(Aktiv ? "#3597d0" : "#226084");
@@ -75,7 +77,7 @@ namespace KameraSteuerungDeLuxe
             get => $"images/{_icon}.png";
         }
 
-        public string Preset 
+        public string Preset
         {
             get => _preset;
             set
@@ -85,7 +87,8 @@ namespace KameraSteuerungDeLuxe
             }
         }
 
-        public DisplayButton() { }
+        public DisplayButton()
+        { }
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
