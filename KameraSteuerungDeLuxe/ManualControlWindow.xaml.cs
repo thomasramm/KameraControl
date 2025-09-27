@@ -65,10 +65,12 @@ namespace KameraSteuerungDeLuxe
         private async void ButtonAll_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             await HttpHelper.CameraMove(_settings.CameraIP, HttpHelper.MoveCommand.ptzstop, _settings.Speed);
+            await HttpHelper.CameraMove(_settings.CameraIP, HttpHelper.MoveCommand.ptzstop, _settings.Speed);
         }
 
         private async void ButtonZoom_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            await HttpHelper.CameraMove(_settings.CameraIP, HttpHelper.MoveCommand.zoomstop, _settings.Speed);
             await HttpHelper.CameraMove(_settings.CameraIP, HttpHelper.MoveCommand.zoomstop, _settings.Speed);
         }
 

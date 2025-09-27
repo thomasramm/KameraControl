@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KameraSteuerungDeLuxe"
         mc:Ignorable="d"
-        Height="200"
-        Width="180"
+        Height="220"
+        Width="200"
         WindowStyle="None"
         Topmost="True"
         ShowInTaskbar="False"
@@ -54,9 +54,8 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Grid.Row="1"
-              ShowGridLines="False"
-          Background="#1e1e1e">
+    <Grid Grid.Row="1" Margin="10"
+              ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
