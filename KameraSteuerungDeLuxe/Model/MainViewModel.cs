@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using KameraSteuerungDeLuxe.Core;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -7,22 +8,7 @@ namespace KameraSteuerungDeLuxe
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private double _height = 400;
         private ManualControlWindow? _manualWindow;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public AppSettings Settings { get; set; }
-
-        public ObservableCollection<DisplayButton> Buttons => Settings.DisplayButtons;
-
-        public RelayCommand ButtonClickCommand { get; }
-
-        public RelayCommand ButtonPowerOffCommand { get; }
-
-        public RelayCommand ButtonPowerOnCommand { get; }
-
-        public RelayCommand ButtonManualMoveCommand { get; }
 
         public MainViewModel(AppSettings settings)
         {
@@ -33,6 +19,14 @@ namespace KameraSteuerungDeLuxe
             ButtonManualMoveCommand = new RelayCommand(ShowManualMoveWindow);
         }
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public RelayCommand ButtonClickCommand { get; }
+        public RelayCommand ButtonManualMoveCommand { get; }
+        public RelayCommand ButtonPowerOffCommand { get; }
+        public RelayCommand ButtonPowerOnCommand { get; }
+        public ObservableCollection<DisplayButton> Buttons => Settings.DisplayButtons;
+
         public bool ManualControlButtonIsEnabled
         {
             get
@@ -42,6 +36,37 @@ namespace KameraSteuerungDeLuxe
             set
             {
                 OnPropertyChanged();
+            }
+        }
+
+        public AppSettings Settings { get; set; }
+
+        protected void OnPropertyChanged([CallerMemberName] string? name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private void MarkActivePreset(string preset)
+        {
+            foreach (DisplayButton b in Buttons)
+            {
+                b.Aktiv = b.Preset == preset;
+            }
+        }
+
+        private async void OnButtonClicked(object? param)
+        {
+            if (param is not DisplayButton button)
+                return;
+
+            MarkActivePreset(button.Preset);
+
+            await HttpHelper.CameraPosition(Settings.CameraIP, button.Preset);
+
+            if (Settings.HideWindowOnClick)
+            {
+                await Task.Delay(2000);
+                Application.Current.MainWindow?.Hide();
             }
         }
 
@@ -83,35 +108,6 @@ namespace KameraSteuerungDeLuxe
                 _manualWindow.Close();
                 _manualWindow = null;
             }
-        }
-
-        private void MarkActivePreset(string preset)
-        {
-            foreach (DisplayButton b in Buttons)
-            {
-                b.Aktiv = b.Preset == preset;
-            }
-        }
-
-        private async void OnButtonClicked(object? param)
-        {
-            if (param is not DisplayButton button)
-                return;
-
-            MarkActivePreset(button.Preset);
-
-            await HttpHelper.CameraPosition(Settings.CameraIP, button.Preset);
-
-            if (Settings.HideWindowOnClick)
-            {
-                await Task.Delay(2000);
-                Application.Current.MainWindow?.Hide();
-            }
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string? name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

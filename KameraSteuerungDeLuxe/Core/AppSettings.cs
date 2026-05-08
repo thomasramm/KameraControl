@@ -4,10 +4,12 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace KameraSteuerungDeLuxe
+namespace KameraSteuerungDeLuxe.Core
 {
     public class AppSettings
     {
+        public bool FirstStart { get; set; } = false;
+
         public bool OpenOnStart { get; set; } = true;
 
         public bool HideWindowOnClick { get; set; } = false;
@@ -25,7 +27,8 @@ namespace KameraSteuerungDeLuxe
         public string CameraIP { get; set; } = "10.0.1.41";
 
         public int CameraPort { get; set; } = 5678;
-        public ObservableCollection<DisplayButton> DisplayButtons { get; set; } = new();
+
+        public ObservableCollection<DisplayButton> DisplayButtons { get; set; } = [];
 
         public string PresetCameraOn { get; set; } = "1";
 
@@ -45,7 +48,7 @@ namespace KameraSteuerungDeLuxe
         private static readonly string AutostartRegistryPath = @"Software\Microsoft\Windows\CurrentVersion\Run";
         private static readonly string shortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Startup), AppName + ".lnk");
 
-        public static void Save(AppSettings settings, bool? autostartEnabled = null)
+        public static void Save(AppSettings settings, bool? autostart = null)
         {
             try
             {
@@ -55,8 +58,8 @@ namespace KameraSteuerungDeLuxe
                 using var writer = new StreamWriter(FilePath);
                 serializer.Serialize(writer, settings);
 
-                if (autostartEnabled.HasValue)
-                    SetAutostartEnabled(autostartEnabled);
+                if (autostart.HasValue)
+                    AppSettingsManager.SetAutostartEnabled(autostart);
             }
             catch (Exception ex)
             {
@@ -105,6 +108,8 @@ namespace KameraSteuerungDeLuxe
             settings.DisplayButtons.Add(new DisplayButton { Position = 8, Name = "Tisch", Icon = "Tisch 02", Preset = "8" });
             settings.DisplayButtons.Add(new DisplayButton { Position = 9, Name = "Bühne", Icon = "Bühne 01", Preset = "9" });
             settings.DisplayButtons.Add(new DisplayButton { Position = 10, Name = "Bühne", Icon = "Bühne 02", Preset = "0" });
+
+            settings.FirstStart = true;
         }
 
         public static void SetAutostartEnabled(bool? enabled)
@@ -118,7 +123,7 @@ namespace KameraSteuerungDeLuxe
 
             if (enabled == true)
             {
-                WshShell shell = new WshShell();
+                WshShell shell = new();
                 IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutPath);
                 shortcut.Description = $"Startet {AppName} beim Windows-Start";
                 shortcut.TargetPath = Environment.ProcessPath;

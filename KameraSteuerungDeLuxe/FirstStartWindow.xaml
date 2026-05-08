@@ -1,0 +1,48 @@
+﻿<Window x:Class="KameraSteuerungDeLuxe.FirstStartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KameraSteuerungDeLuxe"
+        mc:Ignorable="d"
+        WindowStyle="ToolWindow"
+        Title="Hinweise zum ersten Programmstart" Height="550" Width="800"
+        Background="#224864">
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="Title">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="0,10,0,5" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Style="{StaticResource Title}" Text="Anleitung" />
+            <TextBlock Text="Du solltest jetzt ein kleines Kamerasymbol in deiner Taskleiste sehen."
+                       TextWrapping="Wrap" />
+            <TextBlock Text="Falls das Symbol erst mit klick auf die 'weiteren Symbole' angezeigt wird (Klick auf das  ^ Symbol), solltest du das ändern, damit dieses Symbol direkt auf der Taskleiste angezeigt wird, da die Bedienung des Programm über dieses Symbol gesteuert wird."
+                       TextWrapping="Wrap" />
+
+            <TextBlock Style="{StaticResource Title}" Text="Wie du das Symbol direkt in der Taskleiste anzeigst" />
+            <TextBlock Text="(1.) Öffne die Taskleisteneinstellungen (Rechte Maustaste auf die Taskleiste)" TextWrapping="Wrap" />
+            <TextBlock Text="(2.) Klicke auf 'Andere Taskleistensymbole'" TextWrapping="Wrap" />
+            <TextBlock Text="(3.) Suche nach 'KameraSteuerungDeluxe' und stelle dort den Eintrag auf 'On'" TextWrapping="Wrap" />
+
+            <TextBlock Style="{StaticResource Title}" Text="Weitere Einrichtung" TextWrapping="Wrap" />
+            <TextBlock Text="Über das Kontextmenü des Taskleistensymbol (rechte Maustaste auf das Symbol) kannst du die Einstellungen öffnen." />
+            <TextBlock Text="Klicke auf 'Kamera suchen' und wähle die korrekte Kamera aus, falls es mehrere gibt. Alternativ trage die IP Adresse direkt in das Feld ein." TextWrapping="Wrap" />
+            <TextBlock Text="Konfiguriere dir beliebig bis zu 9 Presets mit passenden Namen und Symbol." TextWrapping="Wrap" />
+            <TextBlock Text="Nicht benötigte Einstellungen kannst du ausblenden." TextWrapping="Wrap" />
+            <TextBlock Text="Die Presets müssen zuvor mit der Fernbedienung oder über die Internetseite der Kamera eingestellt und gespeichert werden." TextWrapping="Wrap" />
+
+            <TextBlock Text="Ich hoffe das Programm ist soweit selbsterklärend und hilft euch bei eurer Arbeit." TextWrapping="Wrap" FontStyle="Italic" Margin="0,20,0,0" />
+            <TextBlock Text="LG Thomas" TextWrapping="Wrap" FontStyle="Italic" />
+        </StackPanel>
+        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Width="70" Height="30" Click="Button_Click">Schließen</Button>
+    </Grid>
+</Window>
