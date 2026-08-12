@@ -18,7 +18,9 @@
     <None Remove="images\2 Personen 03.png" />
     <None Remove="images\2 Personen 04.png" />
     <None Remove="images\auge_128x128.png" />
+    <None Remove="images\auge_weiss_128.png" />
     <None Remove="images\beenden_128x128.png" />
+    <None Remove="images\beenden_weiss_128.png" />
     <None Remove="images\Bühne 01.png" />
     <None Remove="images\Bühne 02.png" />
     <None Remove="images\Bühne 03.png" />
@@ -26,6 +28,7 @@
     <None Remove="images\close.png" />
     <None Remove="images\einstellungen.png" />
     <None Remove="images\einstellungen_128x128.png" />
+    <None Remove="images\einstellungen_weiss_128.png" />
     <None Remove="images\Kamera An.png" />
     <None Remove="images\Kamera Aus.png" />
     <None Remove="images\leser.png" />
@@ -77,6 +80,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\beenden_weiss_128.png" />
+    <Resource Include="images\einstellungen_weiss_128.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -96,6 +104,7 @@
     <Resource Include="images\2 Personen 03.png" />
     <Resource Include="images\2 Personen 04.png" />
     <Resource Include="images\auge_128x128.png" />
+    <Resource Include="images\auge_weiss_128.png" />
     <Resource Include="images\beenden_128x128.png" />
     <Resource Include="images\Bühne 01.png" />
     <Resource Include="images\Bühne 02.png" />

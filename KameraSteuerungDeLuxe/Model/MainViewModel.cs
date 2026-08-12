@@ -24,6 +24,12 @@ namespace KameraSteuerungDeLuxe
 
         public RelayCommand ButtonManualMoveCommand { get; }
 
+        public RelayCommand ButtonProgramHideCommand { get; set; }
+
+        public RelayCommand ButtonSettingsShowCommand { get; set; }
+
+        public RelayCommand ButtonProgramExitCommand { get; set; }
+
         public MainViewModel(AppSettings settings)
         {
             Settings = settings;
@@ -31,6 +37,28 @@ namespace KameraSteuerungDeLuxe
             ButtonPowerOffCommand = new RelayCommand(PowerOff);
             ButtonPowerOnCommand = new RelayCommand(PowerOn);
             ButtonManualMoveCommand = new RelayCommand(ShowManualMoveWindow);
+            ButtonProgramHideCommand = new RelayCommand(HideProgramWindow);
+            ButtonSettingsShowCommand = new RelayCommand(SettingsShow);
+            ButtonProgramExitCommand = new RelayCommand(ExitProgram);
+        }
+
+        private void ExitProgram(object? obj)
+        {
+            Application.Current.MainWindow.Close();
+        }
+
+        private void SettingsShow(object? obj)
+        {
+            // ein Settings-Fenster öffnen
+            var settingsWindow = new SettingsWindow(Settings);
+            var result = settingsWindow.ShowDialog();
+            //if (result == true)
+            //    mainWindow?.Refresh();
+        }
+
+        private void HideProgramWindow(object? obj)
+        {
+            Application.Current.MainWindow?.Hide();
         }
 
         public bool ManualControlButtonIsEnabled
