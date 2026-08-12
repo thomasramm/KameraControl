@@ -61,14 +61,6 @@ namespace KameraSteuerungDeLuxe
             Application.Current.MainWindow?.Hide();
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public RelayCommand ButtonClickCommand { get; }
-        public RelayCommand ButtonManualMoveCommand { get; }
-        public RelayCommand ButtonPowerOffCommand { get; }
-        public RelayCommand ButtonPowerOnCommand { get; }
-        public ObservableCollection<DisplayButton> Buttons => Settings.DisplayButtons;
-
         public bool ManualControlButtonIsEnabled
         {
             get
@@ -80,8 +72,6 @@ namespace KameraSteuerungDeLuxe
                 OnPropertyChanged();
             }
         }
-
-        public AppSettings Settings { get; set; }
 
         protected void OnPropertyChanged([CallerMemberName] string? name = null)
         {
