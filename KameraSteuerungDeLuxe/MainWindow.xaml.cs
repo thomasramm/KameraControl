@@ -38,7 +38,7 @@ namespace KameraSteuerungDeLuxe
 
         public void Refresh()
         {
-            _model.ManualControlButtonIsEnabled = true;
+            _model.Refresh();
         }
     }
 }

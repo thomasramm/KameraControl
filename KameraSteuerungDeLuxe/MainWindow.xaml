@@ -89,7 +89,8 @@
                     <TextBlock Text="Aus" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
-            <StackPanel Orientation="Vertical" Margin="0,0,0,0" Width="30">
+            <StackPanel Orientation="Vertical" Margin="0,0,0,0" Width="30"
+                        Visibility="{Binding ShowSystemButtons, Converter={StaticResource BoolToVisibilityConverter}}">
                 <Button Height="27"
                         Background="#226084"
                         Margin="2,0"

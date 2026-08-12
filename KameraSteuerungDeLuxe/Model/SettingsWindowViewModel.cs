@@ -187,6 +187,19 @@ namespace KameraSteuerungDeLuxe
             }
         }
 
+        public bool ShowSystemButtons
+        {
+            get
+            {
+                return _settings.ShowSystemButtons;
+            }
+            set
+            {
+                _settings.ShowSystemButtons = value;
+                OnPropertyChanged();
+            }
+        }
+
         public bool ShowWindowOnStartup
         {
             get

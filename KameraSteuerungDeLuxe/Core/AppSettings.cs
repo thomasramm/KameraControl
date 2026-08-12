@@ -12,6 +12,8 @@ namespace KameraSteuerungDeLuxe.Core
 
         public bool OpenOnStart { get; set; } = true;
 
+        public bool ShowSystemButtons { get; set; } = true;
+
         public bool HideWindowOnClick { get; set; } = false;
 
         public bool ShowManualControlWindow { get; set; } = true;

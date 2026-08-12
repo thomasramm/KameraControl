@@ -52,8 +52,14 @@ namespace KameraSteuerungDeLuxe
             // ein Settings-Fenster öffnen
             var settingsWindow = new SettingsWindow(Settings);
             var result = settingsWindow.ShowDialog();
-            //if (result == true)
-            //    mainWindow?.Refresh();
+            if (result == true)
+                Refresh();
+        }
+
+        public void Refresh()
+        {
+            OnPropertyChanged(nameof(ManualControlButtonIsEnabled));
+            OnPropertyChanged(nameof(ShowSystemButtons));
         }
 
         private void HideProgramWindow(object? obj)
@@ -66,6 +72,18 @@ namespace KameraSteuerungDeLuxe
             get
             {
                 return Settings.ShowManualControlWindow;
+            }
+            set
+            {
+                OnPropertyChanged();
+            }
+        }
+
+        public bool ShowSystemButtons
+        {
+            get
+            {
+                return Settings.ShowSystemButtons;
             }
             set
             {
