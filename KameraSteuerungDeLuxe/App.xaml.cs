@@ -1,4 +1,5 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
+using KameraSteuerungDeLuxe.Core;
 using System.ComponentModel;
 using System.Windows;
 
@@ -11,7 +12,7 @@ namespace KameraSteuerungDeLuxe
     {
         private TaskbarIcon? _trayIcon;
         private MainWindow? mainWindow = null;
-        private AppSettings _settings;
+        private readonly AppSettings _settings;
 
         public App()
         {
@@ -23,6 +24,13 @@ namespace KameraSteuerungDeLuxe
         {
             _trayIcon = (TaskbarIcon)FindResource("TrayIcon");
             _trayIcon.TrayLeftMouseUp += TrayIcon_TrayLeftMouseUp;
+
+            if (_settings.FirstStart)
+            {
+                new FirstStartWindow().ShowDialog();
+                _settings.FirstStart = false;
+                AppSettingsManager.Save(_settings, true);
+            }
 
             if (_settings.OpenOnStart)
             {

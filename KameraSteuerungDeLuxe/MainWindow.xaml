@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KameraSteuerungDeLuxe"
+        xmlns:core="clr-namespace:KameraSteuerungDeLuxe.Core"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
         Title="Kamera Steuerung"
@@ -17,15 +18,15 @@
         MouseDown="Window_MouseDown"
         Closing="Window_Closing">
     <Window.Resources>
-        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" FalseVisibility="Collapsed" />
-        <local:BoolToHeightConverter x:Key="BoolToHeightConverter" />
+        <core:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" FalseVisibility="Collapsed" />
+        <core:BoolToVisibilityConverter x:Key="BoolToHeightConverter" />
     </Window.Resources>
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-            <!-- Konfigurierbare Button -->
+        <!-- Konfigurierbare Button -->
         <ItemsControl Grid.Column="0"
                       ItemsSource="{Binding Buttons}">
             <ItemsControl.ItemsPanel>
@@ -44,9 +45,9 @@
                             <Image Source="{Binding IconUrl}" Width="80" Height="50" HorizontalAlignment="Center" />
                             <TextBlock Text="{Binding Name}"
                                        TextAlignment="Center"
-                                       local:TextBlockExtensions.AutoShrinkFont="True"
-                                       local:TextBlockExtensions.MaxFontSize="18"
-                                       local:TextBlockExtensions.MinFontSize="9"
+                                       core:TextBlockExtensions.AutoShrinkFont="True"
+                                       core:TextBlockExtensions.MaxFontSize="18"
+                                       core:TextBlockExtensions.MinFontSize="9"
                                        Height="20"
                                        Padding="0"
                                        Foreground="White"
