@@ -4,12 +4,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:core="clr-namespace:KameraSteuerungDeLuxe.Core"
         Title="Einstellungen" Height="450" Width="790" MinWidth="790" MinHeight="450"
         Background="#1e1e1e"
         d:Background="Purple"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=local:SettingsWindowViewModel}">
     <Window.Resources>
+        <core:ImagePathConverter x:Key="ImageToPathConverter" />
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="White" />
@@ -279,7 +281,17 @@
                                       Width="46"
                                       Margin="0"
                                       Background="#102f41"
-                                      HorizontalAlignment="Right" />
+                                      HorizontalAlignment="Right" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Width="100" Text="{Binding}"/>
+                                            <Image Width="32" 
+                                                   Source="{Binding Converter={StaticResource ImageToPathConverter}}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                             <TextBlock Grid.Row="1"
                                       Text="Taste:"
                                       Margin="2"
