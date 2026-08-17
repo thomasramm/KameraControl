@@ -116,11 +116,6 @@ namespace KameraSteuerungDeLuxe.Core
 
         public static void SetAutostartEnabled(bool? enabled)
         {
-            SetAutostartEnabledWithAppShortcut(enabled);
-        }
-
-        private static void SetAutostartEnabledWithAppShortcut(bool? enabled)
-        {
             if (enabled == null) return;
 
             if (enabled == true)
@@ -138,37 +133,9 @@ namespace KameraSteuerungDeLuxe.Core
             }
         }
 
-        private static void SetAutostartEnabledWithRegistry(bool? enabled)
-        {
-            RegistryKey? key = Registry.CurrentUser.OpenSubKey(AutostartRegistryPath, true);
-
-            if (enabled == true)
-            {
-                key?.SetValue(AppName, $"\"{Environment.ProcessPath}\"");
-            }
-            else
-            {
-                if (key?.GetValue(AppName) != null)
-                {
-                    key.DeleteValue("KameraSteuerungDeLuxe");
-                }
-            }
-        }
-
         public static bool IsAutostartEnabled()
         {
-            return IsAutostartEnabledWithAppShortcut();
-        }
-
-        private static bool IsAutostartEnabledWithAppShortcut()
-        {
             return System.IO.File.Exists(shortcutPath);
-        }
-
-        private static bool IsAutostartEnabledWithRegistry()
-        {
-            RegistryKey? key = Registry.CurrentUser.OpenSubKey(AutostartRegistryPath, false);
-            return key?.GetValue(AppName) != null;
         }
     }
 }

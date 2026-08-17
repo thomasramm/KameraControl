@@ -13,13 +13,13 @@ namespace KameraSteuerungDeLuxe
 
         private Camera? _selectedCamera;
 
-        private bool _showWindowOnStartup;
+        private bool _systemAutostart;
         private bool searchIsIdle = true;
 
         public SettingsWindowViewModel(AppSettings settings)
         {
             _settings = settings;
-            ShowWindowOnStartup = AppSettingsManager.IsAutostartEnabled();
+            SystemAutostart = AppSettingsManager.IsAutostartEnabled();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -200,15 +200,15 @@ namespace KameraSteuerungDeLuxe
             }
         }
 
-        public bool ShowWindowOnStartup
+        public bool SystemAutostart
         {
             get
             {
-                return _showWindowOnStartup;
+                return _systemAutostart;
             }
             set
             {
-                _showWindowOnStartup = value;
+                _systemAutostart = value;
                 OnPropertyChanged();
             }
         }

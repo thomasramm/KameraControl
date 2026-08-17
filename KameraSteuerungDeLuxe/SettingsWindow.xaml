@@ -202,12 +202,12 @@
                 <ComboBoxItem Content="Deaktiviert" />
             </ComboBox>
         </StackPanel>
-        <CheckBox Grid.Row="4" IsChecked="{Binding OpenOnStart, Mode=TwoWay}"
+        <CheckBox Grid.Row="4" IsChecked="{Binding SystemAutostart, Mode=TwoWay}"
                   Content="Beim Start ausführen"
                   Foreground="White"
                   Grid.ColumnSpan="2"
                   VerticalContentAlignment="Center" />
-        <CheckBox Grid.Row="5" IsChecked="{Binding ShowWindowOnStartup, Mode=TwoWay}"
+        <CheckBox Grid.Row="5" IsChecked="{Binding OpenOnStart, Mode=TwoWay}"
           Content="Fenster beim Starten anzeigen"
           Foreground="White"
           Grid.ColumnSpan="2"

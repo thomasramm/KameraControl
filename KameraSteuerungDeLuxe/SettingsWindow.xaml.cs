@@ -18,7 +18,7 @@ namespace KameraSteuerungDeLuxe
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            AppSettingsManager.Save(_settings, _viewModel.ShowWindowOnStartup);
+            AppSettingsManager.Save(_settings, _viewModel.SystemAutostart);
             DialogResult = true;
             Close();
         }
