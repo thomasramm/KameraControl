@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using KameraSteuerungDeLuxe.Core;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -7,7 +8,6 @@ namespace KameraSteuerungDeLuxe
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private double _height = 400;
         private ManualControlWindow? _manualWindow;
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -24,6 +24,12 @@ namespace KameraSteuerungDeLuxe
 
         public RelayCommand ButtonManualMoveCommand { get; }
 
+        public RelayCommand ButtonProgramHideCommand { get; set; }
+
+        public RelayCommand ButtonSettingsShowCommand { get; set; }
+
+        public RelayCommand ButtonProgramExitCommand { get; set; }
+
         public MainViewModel(AppSettings settings)
         {
             Settings = settings;
@@ -31,6 +37,34 @@ namespace KameraSteuerungDeLuxe
             ButtonPowerOffCommand = new RelayCommand(PowerOff);
             ButtonPowerOnCommand = new RelayCommand(PowerOn);
             ButtonManualMoveCommand = new RelayCommand(ShowManualMoveWindow);
+            ButtonProgramHideCommand = new RelayCommand(HideProgramWindow);
+            ButtonSettingsShowCommand = new RelayCommand(SettingsShow);
+            ButtonProgramExitCommand = new RelayCommand(ExitProgram);
+        }
+
+        private void ExitProgram(object? obj)
+        {
+            Application.Current.MainWindow.Close();
+        }
+
+        private void SettingsShow(object? obj)
+        {
+            // ein Settings-Fenster öffnen
+            var settingsWindow = new SettingsWindow(Settings);
+            var result = settingsWindow.ShowDialog();
+            if (result == true)
+                Refresh();
+        }
+
+        public void Refresh()
+        {
+            OnPropertyChanged(nameof(ManualControlButtonIsEnabled));
+            OnPropertyChanged(nameof(ShowSystemButtons));
+        }
+
+        private void HideProgramWindow(object? obj)
+        {
+            Application.Current.MainWindow?.Hide();
         }
 
         public bool ManualControlButtonIsEnabled
@@ -42,6 +76,47 @@ namespace KameraSteuerungDeLuxe
             set
             {
                 OnPropertyChanged();
+            }
+        }
+
+        public bool ShowSystemButtons
+        {
+            get
+            {
+                return Settings.ShowSystemButtons;
+            }
+            set
+            {
+                OnPropertyChanged();
+            }
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string? name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        private void MarkActivePreset(string preset)
+        {
+            foreach (DisplayButton b in Buttons)
+            {
+                b.Aktiv = b.Preset == preset;
+            }
+        }
+
+        private async void OnButtonClicked(object? param)
+        {
+            if (param is not DisplayButton button)
+                return;
+
+            MarkActivePreset(button.Preset);
+
+            await HttpHelper.CameraPosition(Settings.CameraIP, button.Preset);
+
+            if (Settings.HideWindowOnClick)
+            {
+                await Task.Delay(2000);
+                Application.Current.MainWindow?.Hide();
             }
         }
 
@@ -83,35 +158,6 @@ namespace KameraSteuerungDeLuxe
                 _manualWindow.Close();
                 _manualWindow = null;
             }
-        }
-
-        private void MarkActivePreset(string preset)
-        {
-            foreach (DisplayButton b in Buttons)
-            {
-                b.Aktiv = b.Preset == preset;
-            }
-        }
-
-        private async void OnButtonClicked(object? param)
-        {
-            if (param is not DisplayButton button)
-                return;
-
-            MarkActivePreset(button.Preset);
-
-            await HttpHelper.CameraPosition(Settings.CameraIP, button.Preset);
-
-            if (Settings.HideWindowOnClick)
-            {
-                await Task.Delay(2000);
-                Application.Current.MainWindow?.Hide();
-            }
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string? name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
