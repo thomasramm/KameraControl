@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace KameraSteuerungDeLuxe;
+namespace KameraSteuerungDeLuxe.Core;
 
 public static class TextBlockExtensions
 {

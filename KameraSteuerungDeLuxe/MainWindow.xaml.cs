@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using KameraSteuerungDeLuxe.Core;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -37,7 +38,7 @@ namespace KameraSteuerungDeLuxe
 
         public void Refresh()
         {
-            _model.ManualControlButtonIsEnabled = true;
+            _model.Refresh();
         }
     }
 }
